@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>LearnerLab Demo</title>
+        <meta name="viewport" content="width=device-width"/>
+        <script src="https://unpkg.com/jquery"></script>
+        <link href="https://projects.fivethirtyeight.com/personality-quiz/css/app.css?v=df457b2c69ef87b24fa5b99e7e4da577" type="text/css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/radar-chart-d3@1.2.0/src/radar-chart.min.js"></script>
+    </head>
+    <style>
+#quiet {
+  padding-top: 50px;
+}
+
+.js-results {
+  padding-top: 50px;
+}
+
+body {
+  background: white;
+}
+
+.question .choice-background {
+  background-color: grey;
+}
+
+.button {
+  background: #FDC006;
+}
+
+body > section.view.js-results.results.is-visible > div > svg > polygon.area.radar-chart-serie0.me {
+  stroke: #FDC006 !important;
+  fill: #FDC006 !important;
+}
+
+body > section.view.js-results.results.is-visible > div > svg > polygon.area.radar-chart-serie1.peers {
+  stroke: black !important;
+  fill: black  !important;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.radar-chart .level{stroke:grey;stroke-width:.5}.radar-chart .axis line{stroke:grey;stroke-width:1}.radar-chart .axis .legend{font-family:sans-serif;font-size:10px}.radar-chart .axis .legend.top{dy:1em}.radar-chart .axis .legend.left{text-anchor:start}.radar-chart .axis .legend.middle{text-anchor:middle}.radar-chart .axis .legend.right{text-anchor:end}.radar-chart .tooltip{font-family:sans-serif;font-size:13px;transition:opacity 200ms;opacity:0}.radar-chart .tooltip.visible{opacity:1}.radar-chart .area{stroke-width:2;fill-opacity:.5}.radar-chart.focus .area{fill-opacity:.1}.radar-chart.focus .area.focused{fill-opacity:.7}.radar-chart .circle{fill-opacity:.9}.radar-chart .area,.radar-chart .circle{transition:opacity 300ms,fill-opacity 200ms;opacity:1}.radar-chart .d3-enter,.radar-chart .d3-exit{opacity:0}
+
+
+    </style>
+    <body>
+      <script type='text/javascript' >
+        var choices = {};
+      </script>
+<img src="https://trainugly.com/wp-content/uploads/2017/09/Train-Ugly-4-Logo-black-1.png" width="350px" height="200px" class="center"></img>
+<section class="view question js-question question-quiet is-displayed" id="quiet">
+  <h2 class="question-dek">Growth: Question 1...</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="quiet-0" data-index="0" name="quiet">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="quiet-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="quiet-1" data-index="1" name="quiet">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="quiet-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="quiet-2" data-index="2" name="quiet">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="quiet-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="quiet-3" data-index="3" name="quiet">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="quiet-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="quiet-4" data-index="4" name="quiet">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="quiet-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-compassionate is-visible" id="compassionate">
+  <h2 class="question-dek">Environment: Question 2...</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="compassionate-0" data-index="0" name="compassionate">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="compassionate-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="compassionate-1" data-index="1" name="compassionate">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="compassionate-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="compassionate-2" data-index="2" name="compassionate">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="compassionate-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="compassionate-3" data-index="3" name="compassionate">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="compassionate-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="compassionate-4" data-index="4" name="compassionate">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="compassionate-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-disorganized is-visible" id="disorganized">
+  <h2 class="question-dek">Challenge: Question 3...</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="disorganized-0" data-index="0" name="disorganized">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="disorganized-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="disorganized-1" data-index="1" name="disorganized">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="disorganized-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="disorganized-2" data-index="2" name="disorganized">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="disorganized-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="disorganized-3" data-index="3" name="disorganized">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="disorganized-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="disorganized-4" data-index="4" name="disorganized">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="disorganized-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-worries is-visible" id="worries">
+  <h2 class="question-dek">Perspective: Question 4....</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="worries-0" data-index="0" name="worries">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="worries-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="worries-1" data-index="1" name="worries">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="worries-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="worries-2" data-index="2" name="worries">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="worries-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="worries-3" data-index="3" name="worries">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="worries-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="worries-4" data-index="4" name="worries">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="worries-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<!--<section class="view question js-question question-art is-visible" id="art">
+  <h2 class="question-dek">I am fascinated by art, music or literature.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="art-0" data-index="0" name="art">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="art-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="art-1" data-index="1" name="art">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="art-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="art-2" data-index="2" name="art">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="art-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="art-3" data-index="3" name="art">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="art-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="art-4" data-index="4" name="art">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="art-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-dominant is-visible" id="dominant">
+  <h2 class="question-dek">I am dominant and act as a leader.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="dominant-0" data-index="0" name="dominant">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="dominant-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="dominant-1" data-index="1" name="dominant">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="dominant-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="dominant-2" data-index="2" name="dominant">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="dominant-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="dominant-3" data-index="3" name="dominant">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="dominant-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="dominant-4" data-index="4" name="dominant">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="dominant-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-rude is-visible" id="rude">
+  <h2 class="question-dek">I am sometimes rude to others.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="rude-0" data-index="0" name="rude">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="rude-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="rude-1" data-index="1" name="rude">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="rude-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="rude-2" data-index="2" name="rude">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="rude-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="rude-3" data-index="3" name="rude">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="rude-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="rude-4" data-index="4" name="rude">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="rude-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-started is-visible" id="started">
+  <h2 class="question-dek">I have difficulty getting started on tasks.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="started-0" data-index="0" name="started">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="started-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="started-1" data-index="1" name="started">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="started-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="started-2" data-index="2" name="started">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="started-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="started-3" data-index="3" name="started">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="started-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="started-4" data-index="4" name="started">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="started-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-depressed is-visible" id="depressed">
+  <h2 class="question-dek">I tend to feel depressed and blue.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="depressed-0" data-index="0" name="depressed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="depressed-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="depressed-1" data-index="1" name="depressed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="depressed-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="depressed-2" data-index="2" name="depressed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="depressed-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="depressed-3" data-index="3" name="depressed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="depressed-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="depressed-4" data-index="4" name="depressed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="depressed-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-abstract is-visible" id="abstract">
+  <h2 class="question-dek">I have little interest in abstract ideas.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="abstract-0" data-index="0" name="abstract">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="abstract-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="abstract-1" data-index="1" name="abstract">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="abstract-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="abstract-2" data-index="2" name="abstract">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="abstract-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="abstract-3" data-index="3" name="abstract">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="abstract-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="abstract-4" data-index="4" name="abstract">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="abstract-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-energy is-visible" id="energy">
+  <h2 class="question-dek">I am full of energy.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="energy-0" data-index="0" name="energy">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="energy-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="energy-1" data-index="1" name="energy">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="energy-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="energy-2" data-index="2" name="energy">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="energy-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="energy-3" data-index="3" name="energy">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="energy-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="energy-4" data-index="4" name="energy">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="energy-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-best is-visible" id="best">
+  <h2 class="question-dek">I assume the best about people.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="best-0" data-index="0" name="best">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="best-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="best-1" data-index="1" name="best">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="best-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="best-2" data-index="2" name="best">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="best-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="best-3" data-index="3" name="best">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="best-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="best-4" data-index="4" name="best">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="best-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-reliable is-visible" id="reliable">
+  <h2 class="question-dek">I am reliable and can always be counted on.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="reliable-0" data-index="0" name="reliable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="reliable-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="reliable-1" data-index="1" name="reliable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="reliable-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="reliable-2" data-index="2" name="reliable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="reliable-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="reliable-3" data-index="3" name="reliable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="reliable-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="reliable-4" data-index="4" name="reliable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="reliable-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-stable is-visible" id="stable">
+  <h2 class="question-dek">I am emotionally stable and not easily upset.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="stable-0" data-index="0" name="stable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="stable-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="stable-1" data-index="1" name="stable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="stable-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="stable-2" data-index="2" name="stable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="stable-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="stable-3" data-index="3" name="stable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="stable-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="stable-4" data-index="4" name="stable">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="stable-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-original is-visible" id="original">
+  <h2 class="question-dek">I am original and come up with new ideas.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="original-0" data-index="0" name="original">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="original-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="original-1" data-index="1" name="original">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="original-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="original-2" data-index="2" name="original">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="original-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="original-3" data-index="3" name="original">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="original-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="original-4" data-index="4" name="original">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="original-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-outgoing is-visible" id="outgoing">
+  <h2 class="question-dek">I am outgoing and sociable.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="outgoing-0" data-index="0" name="outgoing">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="outgoing-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="outgoing-1" data-index="1" name="outgoing">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="outgoing-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="outgoing-2" data-index="2" name="outgoing">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="outgoing-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="outgoing-3" data-index="3" name="outgoing">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="outgoing-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="outgoing-4" data-index="4" name="outgoing">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="outgoing-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-cold is-visible" id="cold">
+  <h2 class="question-dek">I can be cold and uncaring.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="cold-0" data-index="0" name="cold">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="cold-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="cold-1" data-index="1" name="cold">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="cold-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="cold-2" data-index="2" name="cold">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="cold-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="cold-3" data-index="3" name="cold">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="cold-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="cold-4" data-index="4" name="cold">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="cold-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-neat is-visible" id="neat">
+  <h2 class="question-dek">I keep things neat and tidy.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="neat-0" data-index="0" name="neat">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="neat-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="neat-1" data-index="1" name="neat">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="neat-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="neat-2" data-index="2" name="neat">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="neat-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="neat-3" data-index="3" name="neat">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="neat-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="neat-4" data-index="4" name="neat">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="neat-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-relaxed is-visible" id="relaxed">
+  <h2 class="question-dek">I am relaxed and handle stress well.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="relaxed-0" data-index="0" name="relaxed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="relaxed-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="relaxed-1" data-index="1" name="relaxed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="relaxed-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="relaxed-2" data-index="2" name="relaxed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="relaxed-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="relaxed-3" data-index="3" name="relaxed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="relaxed-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="relaxed-4" data-index="4" name="relaxed">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="relaxed-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-artistic is-visible" id="artistic">
+  <h2 class="question-dek">I have few artistic interests.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="artistic-0" data-index="0" name="artistic">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="artistic-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="artistic-1" data-index="1" name="artistic">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="artistic-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="artistic-2" data-index="2" name="artistic">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="artistic-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="artistic-3" data-index="3" name="artistic">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="artistic-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="artistic-4" data-index="4" name="artistic">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="artistic-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-charge is-visible" id="charge">
+  <h2 class="question-dek">I prefer to have others take charge.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="charge-0" data-index="0" name="charge">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="charge-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="charge-1" data-index="1" name="charge">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="charge-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="charge-2" data-index="2" name="charge">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="charge-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="charge-3" data-index="3" name="charge">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="charge-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="charge-4" data-index="4" name="charge">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="charge-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-respectful is-visible" id="respectful">
+  <h2 class="question-dek">I am respectful and treat others with respect.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="respectful-0" data-index="0" name="respectful">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="respectful-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="respectful-1" data-index="1" name="respectful">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="respectful-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="respectful-2" data-index="2" name="respectful">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="respectful-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="respectful-3" data-index="3" name="respectful">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="respectful-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="respectful-4" data-index="4" name="respectful">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="respectful-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-persistent is-visible" id="persistent">
+  <h2 class="question-dek">I am persistent and work until the task is finished.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="persistent-0" data-index="0" name="persistent">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="persistent-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="persistent-1" data-index="1" name="persistent">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="persistent-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="persistent-2" data-index="2" name="persistent">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="persistent-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="persistent-3" data-index="3" name="persistent">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="persistent-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="persistent-4" data-index="4" name="persistent">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="persistent-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-secure is-visible" id="secure">
+  <h2 class="question-dek">I feel secure and comfortable with myself.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="secure-0" data-index="0" name="secure">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="secure-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="secure-1" data-index="1" name="secure">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="secure-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="secure-2" data-index="2" name="secure">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="secure-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="secure-3" data-index="3" name="secure">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="secure-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="secure-4" data-index="4" name="secure">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="secure-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-complex is-visible" id="complex">
+  <h2 class="question-dek">I am complex and a deep thinker.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="complex-0" data-index="0" name="complex">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="complex-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="complex-1" data-index="1" name="complex">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="complex-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="complex-2" data-index="2" name="complex">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="complex-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="complex-3" data-index="3" name="complex">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="complex-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="complex-4" data-index="4" name="complex">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="complex-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-active is-visible" id="active">
+  <h2 class="question-dek">I am less active than other people.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="active-0" data-index="0" name="active">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="active-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="active-1" data-index="1" name="active">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="active-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="active-2" data-index="2" name="active">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="active-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="active-3" data-index="3" name="active">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="active-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="active-4" data-index="4" name="active">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="active-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-fault is-visible" id="fault">
+  <h2 class="question-dek">I tend to find fault with others.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="fault-0" data-index="0" name="fault">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="fault-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="fault-1" data-index="1" name="fault">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="fault-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="fault-2" data-index="2" name="fault">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="fault-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="fault-3" data-index="3" name="fault">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="fault-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="fault-4" data-index="4" name="fault">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="fault-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-careless is-visible" id="careless">
+  <h2 class="question-dek">I can be somewhat careless.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="careless-0" data-index="0" name="careless">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="careless-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="careless-1" data-index="1" name="careless">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="careless-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="careless-2" data-index="2" name="careless">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="careless-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="careless-3" data-index="3" name="careless">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="careless-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="careless-4" data-index="4" name="careless">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="careless-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-temperamental is-visible" id="temperamental">
+  <h2 class="question-dek">I am temperamental and get emotional easily.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="temperamental-0" data-index="0" name="temperamental">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="temperamental-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="temperamental-1" data-index="1" name="temperamental">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="temperamental-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="temperamental-2" data-index="2" name="temperamental">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="temperamental-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="temperamental-3" data-index="3" name="temperamental">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="temperamental-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="temperamental-4" data-index="4" name="temperamental">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="temperamental-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>
+  <hr class="question-link">
+</section>
+<section class="view question js-question question-creativity is-visible" id="creativity">
+  <h2 class="question-dek">I have little creativity.</h2>
+  <form class="choices">
+    <div class="choice" tab-index="0">
+      <input class="choice-input js-choice-input" type="radio" id="creativity-0" data-index="0" name="creativity">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="creativity-0" data-index="0"><span class="choice-text">Disagree strongly</span></label>
+    </div>
+    <div class="choice" tab-index="1">
+      <input class="choice-input js-choice-input" type="radio" id="creativity-1" data-index="1" name="creativity">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="creativity-1" data-index="1"><span class="choice-text">Disagree a little</span></label>
+    </div>
+    <div class="choice" tab-index="2">
+      <input class="choice-input js-choice-input" type="radio" id="creativity-2" data-index="2" name="creativity">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="creativity-2" data-index="2"><span class="choice-text">Neutral</span></label>
+    </div>
+    <div class="choice" tab-index="3">
+      <input class="choice-input js-choice-input" type="radio" id="creativity-3" data-index="3" name="creativity">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="creativity-3" data-index="3"><span class="choice-text">Agree a little</span></label>
+    </div>
+    <div class="choice" tab-index="4">
+      <input class="choice-input js-choice-input" type="radio" id="creativity-4" data-index="4" name="creativity">
+      <div class="choice-background"></div>
+      <label class="choice-label button js-choice-label" for="creativity-4" data-index="4"><span class="choice-text">Agree strongly</span></label>
+    </div>
+  </form>-->
+  </section>
+  <section class="view js-results results is-visible">
+    <h2>Your Results</h2>
+    <div class="chart-container"></div>
+  </section>
+
+  <div class="status-wrap">
+</body>
+
+  <script>
+    $('.js-results').hide();
+    $( ".choice-input").click(function() {
+      choices[$(this).attr('name')] = $(this).attr('data-index')
+      $("input[name='" + $(this).attr('name') + "']").addClass("is-answered");
+
+      if (Object.keys(choices).length == 4) {
+        $('.question').hide();
+        console.dir(choices)
+        var data = [
+        {
+          className: 'me', // optional, can be used for styling
+          axes: [
+            {axis: "Growth Mindset", value: choices.compassionate },
+            {axis: "Environment", value: choices.disorganized },
+            {axis: "Challenge", value: choices.quiet },
+            {axis: "Perspective", value: choices.worries },
+          ]
+        },
+      ];
+        console.dir(RadarChart)
+        RadarChart.draw(".chart-container", data);
+        $('.js-results').show();
+      }
+    });
+  </script>
